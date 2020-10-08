@@ -18,18 +18,14 @@
 //        along with this program; if not, write to the Free Software
 //        Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-
 import java.util.Arrays;
 import java.util.Random;
 
 public class Main {
-
-
     public static void main(String[] args){
-//      The main method is mostly making the program more human-like here.
-//      Additionally it also calls the different methods, and providing them with the right arguments.
+//      The program is broken down into several methods to make debugging easier.
 
-//      Change the value below to change the number of digits in the passcode
+//      Change the value below to change the number of digits in the passcode.
         int[] pw = pwGen(4);
         System.out.println("Starting bruteforce of array...");
         int solution = attack(pw);
@@ -39,7 +35,7 @@ public class Main {
     }
 
     public static int[] pwGen(int digits){
-//      Generate password with the provided number of digits
+//      Randomly generate password with the provided number of digits
         Random rand = new Random();
         int[] pw = new int[digits];
         for(int i = 0; i < digits; i++){
@@ -50,12 +46,9 @@ public class Main {
     }
     public static void printArray(int[] arr){
 //      Print pretty version of the password. Not currently in use, but if I find the time I will implement it.
-        //System.out.print("[");
         for (int j : arr) {
             System.out.print("["+j+"]");
-            //System.out.print(", ");
         }
-        //System.out.print("]");
     }
 
     public static int arrayToInt(int[] intKassen){
@@ -64,21 +57,18 @@ public class Main {
         for (int j : intKassen) {
             res = res * 10;
             res = res + j;
-
         }
         return res;
     }
     public static int attack(int[] pw){
-//      count from 0 and upwards until correct passcode is found, and return i. It is lazy, but it works.
+//      This was the easiest way to do this, but far from the most effective.
         int n = arrayToInt(pw);
         int i = 0;
         for (i = 0; i < n; i++){
             if(i != n){
                 System.out.println("it wasn't " + i);
             }
-
         }
         return i;
-
     }
 }
